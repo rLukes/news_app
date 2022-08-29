@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/constant/palette.dart';
 import 'package:news_app/features/show_news/presentation/pages/home_page.dart';
-import 'package:news_app/features/show_news/presentation/pages/news_view_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         ),
         primarySwatch: Colors.blue,
       ),
-      home: const NewsViewPage(),
+      home: const HomePage(),
     );
   }
 }
