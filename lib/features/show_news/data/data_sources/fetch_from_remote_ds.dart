@@ -2,6 +2,8 @@ import 'package:news_app/core/failures_successes/exceptions.dart';
 import 'package:news_app/core/services/api_service.dart';
 import 'package:news_app/features/show_news/data/models/news_info_model.dart';
 
+import '../../../../core/constant/strings.dart';
+
 abstract class FetchFromRemoteDS {
   Future<List<NewsInfoModel>> fetchNews(String? searchTxt);
 }
@@ -14,7 +16,14 @@ class FetchFromRemoteDSImpl extends FetchFromRemoteDS {
   @override
   Future<List<NewsInfoModel>> fetchNews(String? searchTxt) async {
     try {
-      Map<String, dynamic> data = await apiService.getData();
+      Map<String, dynamic> data = await apiService.getData(
+       searchTxt != null ?  Strings.apiEverything : Strings.apiTopHeadline,
+        {
+          'apiKey' : Strings.apiKey,
+          if(searchTxt == null) 'country' : 'us',
+          if( searchTxt != null) 'q' : searchTxt
+        }
+      );
 
       List list = data['articles'];
       List<Map<String, dynamic>> mapList = [];
