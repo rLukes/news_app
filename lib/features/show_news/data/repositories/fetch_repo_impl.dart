@@ -6,10 +6,10 @@ import 'package:news_app/features/show_news/data/data_sources/fetch_from_remote_
 import 'package:news_app/features/show_news/domain/entities/news_info.dart';
 import 'package:news_app/features/show_news/domain/repositories/fetch_repo_contract.dart';
 
-class FetchRepoImpl implements FetchRepo {
-  final FetchFromRemoteDS fetchFromRemoteDS;
+import '../../../../core/services_locator.dart';
 
-  FetchRepoImpl({required this.fetchFromRemoteDS});
+class FetchRepoImpl implements FetchRepo {
+  final FetchFromRemoteDS fetchFromRemoteDS = sl<FetchFromRemoteDS>();
 
   @override
   Future<Either<Failure, List<NewsInfo>>> fetchNews(String? searchTxt) async{

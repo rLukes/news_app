@@ -3,15 +3,14 @@ import 'package:news_app/core/services/api_service.dart';
 import 'package:news_app/features/show_news/data/models/news_info_model.dart';
 
 import '../../../../core/constant/strings.dart';
+import '../../../../core/services_locator.dart';
 
 abstract class FetchFromRemoteDS {
   Future<List<NewsInfoModel>> fetchNews(String? searchTxt);
 }
 
 class FetchFromRemoteDSImpl extends FetchFromRemoteDS {
-  final ApiService apiService;
-
-  FetchFromRemoteDSImpl({required this.apiService});
+  final ApiService apiService = sl<ApiService>();
 
   @override
   Future<List<NewsInfoModel>> fetchNews(String? searchTxt) async {

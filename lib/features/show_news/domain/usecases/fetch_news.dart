@@ -3,12 +3,12 @@ import 'package:news_app/core/failures_successes/failures.dart';
 import 'package:news_app/features/show_news/domain/entities/news_info.dart';
 import 'package:news_app/features/show_news/domain/repositories/fetch_repo_contract.dart';
 
+import '../../../../core/services_locator.dart';
+
 class FetchNewsUsecases {
-  final FetchRepo fetchRepo;
+  final FetchRepo fetchRepo = sl<FetchRepo>();
 
-  FetchNewsUsecases({required this.fetchRepo});
-
-  Future<Either<Failure, List<NewsInfo>>> fetchNews(String? srchTxt) {
+    Future<Either<Failure, List<NewsInfo>>> fetchNews(String? srchTxt) {
     return fetchRepo.fetchNews(srchTxt);
   }
 }
